@@ -1,3 +1,4 @@
+import random
 ####
 # Each team's file must define four tokens:
 #     team_name: a string
@@ -26,8 +27,28 @@ def move(my_history, their_history, my_score, their_score):
     # Analyze my_history and their_history and/or my_score and their_score.
     # Decide whether to return 'c' or 'b'.
     
-    return 'c'
-
+    a = len(my_history)
+    blank = ['b','c']
+    g = ''
+    
+    if len(my_history) == 0:
+        return 'c'
+    else:
+        if len(my_history) % 2 == 1:
+            g = random.choice(blank)
+            if g == 'c':
+                print g
+                return 'c'
+            if g == 'b':
+                print g
+                return 'b'
+        else:
+            if their_history[a-1] == 'c':
+                return 'c'
+            if their_history[a-1] == 'b':
+                return 'b'
+    
+    
     
 def test_move(my_history, their_history, my_score, their_score, result):
     '''calls move(my_history, their_history, my_score, their_score)
